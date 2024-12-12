@@ -4,7 +4,7 @@ import PlusIcon from "../assets/icons/PlusIcon"
 import Button from "./Button"
 import Input from "./Input"
 import Select from "./Select"
-import { ElementRef, LegacyRef, RefObject, useEffect, useRef, useState } from "react"
+import { RefObject, useEffect, useRef, useState } from "react"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
 
@@ -65,7 +65,7 @@ function ContentModal({ open, onClose }: ModalProps) {
           <div className="group/modal absolute top-0 right-0 w-full h-full bg-black/80 rounded-2xl flex items-center justify-center">
             <div
               ref={modalRef}
-              className="w-4/5 md:w-2/5 h-2/3 bg-gradient-to-br from-white/5 to-white/10 rounded-xl flex flex-col justify-center items-center gap-4 relative"
+              className="w-4/5 md:w-2/5 h-2/3 bg-gradient-to-br from-zinc-800 to-zinc-950 rounded-xl flex flex-col justify-center items-center gap-4 relative border-[0.5px] border-white/5"
             >
               <div className="absolute flex w-full h-fit justify-center mb-8 text-3xl top-10 items-center">
                 <h1>Add Content</h1>
