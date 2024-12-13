@@ -3,9 +3,11 @@ import Dashboard from "./pages/Dashboard"
 import Signup from "./pages/Signup"
 import SignIn from "./pages/SignIn"
 import ShareView from "./pages/ShareView"
+import { RecoilRoot } from "recoil"
 
 function App() {
   return (
+    <RecoilRoot>
     <BrowserRouter>
     <Routes>
       
@@ -16,6 +18,7 @@ function App() {
 
     </Routes>
     </BrowserRouter>
+    </RecoilRoot>
   )
 }
 

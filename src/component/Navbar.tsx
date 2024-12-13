@@ -10,9 +10,13 @@ import NavItem from "./NavItem"
 import Twitter from "../assets/icons/Twitter"
 import axios from "axios"
 import { BACKEND_URL, FRONTEND_URL } from "../config"
+import { useRecoilState } from "recoil"
+import { filterState } from "../pages/Dashboard"
 
 function Navbar() {
     const isMobile = useMediaQuery("(max-width:768px)")
+
+    const [filterType, setFilterType] = useRecoilState(filterState);
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -132,10 +136,18 @@ function Navbar() {
     <div className={cn("mt-4 flex justify-center flex-col transition-all ease-in-out",
         isCollapsed && "opacity-0"
     )}>
-        <NavItem startIcon={<LucideYoutube />}>
+        <NavItem 
+        onClick={()=>{
+            setFilterType("youtube")
+        }}
+        startIcon={<LucideYoutube />}>
             <p>YouTube</p>
         </NavItem>
-        <NavItem startIcon={<Twitter />}>
+        <NavItem 
+        onClick={()=>{
+            setFilterType("twitter")
+        }}
+        startIcon={<Twitter />}>
             <p>Twitter</p>
         </NavItem>
     </div>

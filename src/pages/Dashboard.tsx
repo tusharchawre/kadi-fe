@@ -2,15 +2,29 @@ import { useEffect } from "react";
 import { Card } from "../component/Card";
 import Navbar from "../component/Navbar";
 import { useContent } from "../hooks/useContent";
+import { atom, useRecoilState } from "recoil";
+
+export const filterState = atom({
+  key: 'filterType', 
+  default: "", 
+});
 
 function Dashboard() {
 
   const {contents, refresh} = useContent();
 
+  
+
+  const [filterType, setFilterType] = useRecoilState(filterState);
+
+
+  const filteredContents = contents.filter(({ type }) =>
+    filterType ? type === filterType : true
+  );
 
   useEffect(() => {
     refresh();
-  }, [contents])
+  })
 
 
 
@@ -28,13 +42,16 @@ function Dashboard() {
         <div className="p-4 h-fit columns-1 md:columns-3 gap-4 w-full">
         
 
-
-        {contents.map(({type, link, title, id}) => <Card 
-            type={type}
-            link={link}
-            title={title}
-            id={id}
-        />)}
+        {filteredContents.map(({ type, link, title, id }) => (
+        <Card
+          key={id}
+          type={type}
+          link={link}
+          title={title}
+          id={id}
+        />
+      ))}
+      
         </div>
         </div>
       </div>

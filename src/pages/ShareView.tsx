@@ -1,7 +1,4 @@
-import axios from 'axios';
-import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom';
-import { BACKEND_URL } from '../config';
+
 import { useSharedCotent } from '../hooks/useShareContent';
 import { Card } from '../component/Card';
 
