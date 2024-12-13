@@ -49,7 +49,7 @@ function ContentModal({ open, onClose }: ModalProps) {
       type
   }, {
       headers: {
-          "Authorization": localStorage.getItem("token")
+          "Authorization" : localStorage.getItem("token")
       }
   })
 

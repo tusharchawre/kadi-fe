@@ -21,16 +21,19 @@ function Dashboard() {
 
         
 
-        <Navbar>
-        </Navbar>
+        <Navbar />
+        
 
         <div className="w-full h-full overflow-y-auto flex justify-center pt-14">
         <div className="p-4 h-fit columns-1 md:columns-3 gap-4 w-full">
         
-        {contents.map(({type, link, title}) => <Card 
+
+
+        {contents.map(({type, link, title, id}) => <Card 
             type={type}
             link={link}
             title={title}
+            id={id}
         />)}
         </div>
         </div>

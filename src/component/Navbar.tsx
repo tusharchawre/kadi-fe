@@ -8,6 +8,8 @@ import PlusIcon from "../assets/icons/PlusIcon"
 import ContentModal from "./ContentModal"
 import NavItem from "./NavItem"
 import Twitter from "../assets/icons/Twitter"
+import axios from "axios"
+import { BACKEND_URL, FRONTEND_URL } from "../config"
 
 function Navbar() {
     const isMobile = useMediaQuery("(max-width:768px)")
@@ -88,6 +90,20 @@ function Navbar() {
         }
       }
 
+      const handleShare = async () =>{
+      const response =  await axios.post(`${BACKEND_URL}/api/v1/user/sharelink`, {
+            share: true
+        },{
+            headers : {
+                "Authorization" : localStorage.getItem("token")
+            }
+        })
+
+
+        alert(`The Share link to this brain is : ${FRONTEND_URL}/user/${response.data.hash.hash}`)
+
+      }
+
 
   return (
     <>
@@ -147,7 +163,11 @@ function Navbar() {
             {isCollapsed && <MenuIcon onClick={resetWidth} role="button" className="h-6 w-6 text-muted-foreground " />}
 
             <div className="flex gap-2 px-3 py-2 h-fit absolute justify-end w-fit right-0">
-          <Button variant="dark" startIcon={<Share />}>
+          <Button 
+          variant="dark" 
+          startIcon={<Share />}
+          onClick={handleShare}
+          >
             Share
           </Button>
           <Button variant="light" onClick={()=>{setIsOpen(true)}} startIcon={<PlusIcon />}>
